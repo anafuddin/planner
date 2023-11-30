@@ -8,13 +8,16 @@ import { toast } from "sonner";
 import { FormInput } from "@/components/form/form-input";
 import { useAction } from "@/hooks/use-action";
 import { updateList } from "@/actions/update-list";
+import { ListOptions } from "./list-options";
 
 interface ListHeaderProps {
   data: List;
-}
+  onAddCard: () => void;
+};
 
 export const ListHeader = ({
-  data
+  data,
+  onAddCard
 }: ListHeaderProps) => {
   const [title, setTitle] = useState(data.title);
   const [isEditing, setIsEditing] = useState(false);
@@ -72,7 +75,6 @@ export const ListHeader = ({
   };
 
   useEventListener("keydown", onKeyDown)
-
   return (
     <div className="pt-2 px-2 text-sm font-semibold flex justify-between items-start gap-x-2">
       {isEditing ? (
@@ -101,6 +103,10 @@ export const ListHeader = ({
           {title}
         </div>
       )}
+      <ListOptions
+        data={data}
+        onAddCard={onAddCard}
+      />
     </div>
   )
 }
