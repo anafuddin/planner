@@ -39,7 +39,7 @@ export const ListContainer = ({
       toast.error(error);
     },
   });
-  
+
   const { execute: executeUpdateCardOrder } = useAction(updateCardOrder, {
     onSuccess: () => {
       toast.success("Card reordered");
@@ -146,7 +146,7 @@ export const ListContainer = ({
         executeUpdateCardOrder({
           boardId: boardId,
           items: destList.cards
-        })
+        });
       }
     }
   }
